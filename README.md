@@ -44,6 +44,16 @@ files and files including matching labels for the train and test sets.
 Results: In the results folder you can find all result files for DPQ and
 STQ methods.
 
+# Installation
+
+We currently support only Python versions 3.5+. Installing using pip is
+recommended:
+
+``` 
+pip install -r requirements.txt
+```
+
+
 # Quick Start: ER-HAL in 30 seconds
 
 There are tow main steps in using ER-HAL:
@@ -60,14 +70,6 @@ There are tow main steps in using ER-HAL:
 
 2.2. run ER-HAL/main.py script.
 
-# Installation
-
-We currently support only Python versions 3.5+. Installing using pip is
-recommended:
-
-``` 
-pip install -r requirements.txt
-```
 
 # The Team
 
