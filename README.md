@@ -52,13 +52,13 @@ There are tow main steps in using ER-HAL:
 
 1.1. choose dataset under ER-HAL/createFv/CTE.py
 
-1.2. run createFv/createFeatureVectorFile.py script
+1.2. run ER-HAL/createFv/createFeatureVectorFile.py script
 
 ### 2.  Run active learning process:
 
 2.1. choose dataset and number of AML iterations under ER-HAL/cte.py
 
-2.2. run ER-HAL//main.py script.
+2.2. run ER-HAL/main.py script.
 
 # Installation
 
