@@ -1,0 +1,3 @@
+QUERY,Accuracy,Precision,Recall,F1
+----,----,----,----
+DPQ,0.97,0.88,0.863,0.871

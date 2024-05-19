@@ -1,0 +1,3 @@
+QUERY,Accuracy,Precision,Recall,F1
+----,----,----,----
+STQ,0.991,0.964,1.0,0.982
