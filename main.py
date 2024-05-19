@@ -33,8 +33,7 @@ def get_query_strategy():
 
 def main():
     x_train, y_train, x_test, y_test = get_data()
-    # strategy = get_query_strategy()
-    strategy = STQ
+    strategy = get_query_strategy()
     accuracy_dict, precision_dict, recall_dict, f1_dict = get_init_dicts(strategy)
     for i in range(NI):
         print("ni=", i)
