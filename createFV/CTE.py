@@ -1,4 +1,4 @@
-DATA_BASE ="S_iTunes_Amazon"
+DATA_BASE = "S_iTunes_Amazon"
 # DATA_BASE ="S_Walmart-Amazon"
 # DATA_BASE ="S_BeerAdvo_RateBeer"
 # DATA_BASE ="S_Amazon_Google"
@@ -12,6 +12,6 @@ DATA_BASE ="S_iTunes_Amazon"
 # DATA_BASE ="T_abt_buy"
 # DATA_BASE ="T_Amazon_Google"
 
-DATA_BASE_DIRECTORY = f'datasets/{DATA_BASE}'
-FEATURES_TRAIN_DIRECTORY = f'datasets/{DATA_BASE}/features_train'
-FEATURES_TEST_DIRECTORY = f'datasets/{DATA_BASE}/features_test'
+DATA_BASE_DIRECTORY = f"datasets/{DATA_BASE}"
+FEATURES_TRAIN_DIRECTORY = f"datasets/{DATA_BASE}/features_train"
+FEATURES_TEST_DIRECTORY = f"datasets/{DATA_BASE}/features_test"

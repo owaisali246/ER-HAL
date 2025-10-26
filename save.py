@@ -10,8 +10,8 @@ def save_results(accuracy_dict, precision_dict, recall_dict, f1_dict,strategy, a
         writer = csv.writer(f)
         if add_header:
             writer.writerow(header)
-        # write the data
-        writer.writerow(["----", "----", "----", "----"])
+
+        writer.writerow(["----", "----", "----", "----", "----"])
         for k, v in accuracy_dict.items():
             lenn = len(v) - 1
             writer.writerow(
@@ -19,13 +19,8 @@ def save_results(accuracy_dict, precision_dict, recall_dict, f1_dict,strategy, a
 def save_all_iterationts_results(data, title):
     import os
 
-    # checking if the directory demo_folder
-    # exist or not.
     if not os.path.exists(f'results/{DATA_BASE}/'):
-        # if the demo_folder directory is not present
-        # then create it.
         os.makedirs(f'results/{DATA_BASE}/')
     with open(f'results/{DATA_BASE}/all_iterationts_results_{title}_{datetime.now().strftime("%H_%M_%S")}.csv', 'w',encoding='UTF8') as f:
         write = csv.writer(f)
         write.writerows(data)
-

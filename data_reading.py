@@ -20,13 +20,14 @@ encoding_list = ['utf_8', 'ascii', 'big5', 'big5hkscs', 'cp037', 'cp273', 'cp424
 def read_data(path):
     for encoding in encoding_list:
         worked = True
+        df: pd.DataFrame | None = None
         try:
             df = pd.read_csv(path, encoding=encoding)
         except:
             worked = False
-        if worked:
+        if worked and df is not None:
             print(encoding, ':\n', df.head())
-            return df;
+            return df
 
 
 def get_data():

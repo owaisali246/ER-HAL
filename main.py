@@ -1,11 +1,13 @@
 from copy import deepcopy
+import pandas as pd
+import os
 
 from Result import Result
 from save import save_results
 from cte import NI, DPQ, STQ
 from data_reading import get_data
 from ActiveLearning import start_active_learning
-from tools import add_result, get_average_graph
+from tools import add_result
 
 
 def get_init_dicts(strategy):
@@ -35,22 +37,51 @@ def main():
     x_train, y_train, x_test, y_test = get_data()
     strategy = get_query_strategy()
     accuracy_dict, precision_dict, recall_dict, f1_dict = get_init_dicts(strategy)
+
+    all_metrics = []
+
     for i in range(NI):
-        print("ni=", i)
+        print("ni =", i)
         x_pool = x_train
         y_pool = y_train
-        results = []
 
-        results.append(my_function(strategy, deepcopy(x_pool), deepcopy(y_pool), deepcopy(x_test), deepcopy(y_test)))
+        result = my_function(
+            strategy,
+            deepcopy(x_pool),
+            deepcopy(y_pool),
+            deepcopy(x_test),
+            deepcopy(y_test),
+        )
 
-        # save_results(results)
-        accuracy_dict, precision_dict, recall_dict, f1_dict = add_result(accuracy_dict, precision_dict,
-                                                                         recall_dict, f1_dict, results)
-    get_average_graph(f1_dict, "F1")
-    get_average_graph(accuracy_dict, "Accuracy")
-    get_average_graph(precision_dict, "Precision")
-    get_average_graph(recall_dict, "Recall")
+        accuracy_dict, precision_dict, recall_dict, f1_dict = add_result(
+            accuracy_dict, precision_dict, recall_dict, f1_dict, [result]
+        )
+
+        acc_values = accuracy_dict[strategy][0]
+        prec_values = precision_dict[strategy][0]
+        rec_values = recall_dict[strategy][0]
+        f1_values = f1_dict[strategy][0]
+
+        for j in range(len(f1_values)):
+            all_metrics.append({
+                "iteration": i,
+                "step": j,
+                "accuracy": acc_values[j],
+                "precision": prec_values[j],
+                "recall": rec_values[j],
+                "f1_score": f1_values[j]
+            })
+
+    df = pd.DataFrame(all_metrics)
+    os.makedirs("result_graph", exist_ok=True)
+    csv_path = f"result_graph/results_{strategy}.csv"
+    df.to_csv(csv_path, index=False)
+    print(f"\n✅ Metrics saved to {csv_path}")
+
+    print(df.head())
+
     save_results(accuracy_dict, precision_dict, recall_dict, f1_dict, strategy)
+
 
 if __name__ == "__main__":
     main()

@@ -1,11 +1,7 @@
 from modAL import ActiveLearner, Committee
-from sklearn.calibration import CalibratedClassifierCV
-from sklearn.ensemble import AdaBoostClassifier, RandomForestClassifier, GradientBoostingClassifier
-from sklearn.linear_model import LogisticRegression, PassiveAggressiveClassifier
+from sklearn.ensemble import AdaBoostClassifier, RandomForestClassifier
 from sklearn.naive_bayes import GaussianNB
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn.svm import SVC
-from sklearn.tree import DecisionTreeClassifier, ExtraTreeClassifier
+# from sklearn.tree import DecisionTreeClassifier
 
 from Extending_modAL import custom_query_strategy
 random_forest_estimator = RandomForestClassifier()

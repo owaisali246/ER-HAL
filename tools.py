@@ -38,6 +38,5 @@ def add_result(accuracy_dict, precision_dict, recall_dict, f1_dict, results):
 
 def get_average_graph(dict, title):
     for k, v in dict.items():
-        # Calculate the column-wise average and round to 3 decimal places
         column_avg = np.mean(np.array(v), axis=0)
         dict[k] = list(np.round(column_avg, 3))
