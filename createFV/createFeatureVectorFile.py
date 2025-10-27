@@ -1,4 +1,5 @@
 import csv
+import os
 import re
 from datetime import datetime
 
@@ -33,6 +34,7 @@ from similarityutils import (
 
 
 def readData(directory):
+    print("Data directory:", DATA_BASE_DIRECTORY)
     source = pd.read_csv(f"{DATA_BASE_DIRECTORY}/tableA.csv")
     print("Source file records:", len(source))
     target = pd.read_csv(f"{DATA_BASE_DIRECTORY}/tableB.csv")
@@ -340,7 +342,7 @@ def typeSpecificSimilarities(
 
 
 if __name__ == "__main__":
-    DATA_BASE_DIRECTORY = "/content/ER-HAL/createFV/datasets/S_iTunes_Amazon"
+    DATA_BASE_DIRECTORY = f"{os.getcwd()}/createFV/{DATA_BASE_DIRECTORY}"
     source, target, gold_standard_train, gold_standard_test = readData(DATA_BASE_DIRECTORY)
     createFeatureVectorFile(source, target, gold_standard_train, FEATURES_TRAIN_DIRECTORY)
     createFeatureVectorFile(source, target, gold_standard_test, FEATURES_TEST_DIRECTORY)
